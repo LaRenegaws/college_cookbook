@@ -1,0 +1,15 @@
+<%= simple_form_for @recipe do |f| %>
+
+	<% if @recipe.errors.any? %>
+		<%= @recipe.errors.count %> error(s) occurred
+		<% @recipe.errors.full_messages.each do |msg| %>
+			<ul><%= msg %></ul>
+		<% end %>
+		<br>
+	<% end %>
+
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.button :submit %>
+
+<% end %>
