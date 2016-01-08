@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108221624) do
+ActiveRecord::Schema.define(version: 20160108224022) do
 
   create_table "directions", force: :cascade do |t|
     t.text     "order"
