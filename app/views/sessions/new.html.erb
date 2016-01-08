@@ -1,0 +1,10 @@
+<%= simple_form_for(:session, url: login_path) do |f| %>
+
+	<div class="panel-body">
+		<%= f.input :email, input_html: { class: 'form-control' } %>
+		<br>
+		<%= f.input :password, input_html: { class: 'form-control' } %>
+		<br>
+		<%= f.button :submit,"Login", class: 'btn btn-submit' %>
+	</div>
+<% end %>

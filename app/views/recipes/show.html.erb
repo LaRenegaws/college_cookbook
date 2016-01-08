@@ -1,5 +1,26 @@
+<%= image_tag @recipe.image.url(:medium) %>
 <h1><%=@recipe.title%></h1>
+
 <p><%=@recipe.description%></p>
+
+<h2> Ingredients</h2>
+	<h3>
+	<ul class="list_group">
+		<% @recipe.ingrediants.each do |ingr| %>
+		<li><%= ingr.name %></li>
+		<% end %>
+	</ul>
+</h3>
+
+<h2> Directions</h2>
+	<h3>
+	<ul class="list_group">
+		<% @recipe.directions.each do |direc| %>
+		<li><%= direc.order %></li>
+		<% end %>
+	</ul>
+</h3>
+
 <div class="btn btn-default"><%= link_to "Back", root_path %></div>
 <div class="btn btn-default"><%= link_to "Edit", edit_recipe_path %></div>
 <div class="btn btn-default"><%= link_to "Delete", recipe_path, method: :delete, data:{ confirm: "Are you sure?"} %></div>

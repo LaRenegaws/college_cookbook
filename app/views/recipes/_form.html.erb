@@ -1,15 +1,43 @@
-<%= simple_form_for @recipe do |f| %>
-
+<%= simple_form_for @recipe, html: { multipart: true } do |f| %>
 	<% if @recipe.errors.any? %>
-		<%= @recipe.errors.count %> error(s) occurred
-		<% @recipe.errors.full_messages.each do |msg| %>
-			<ul><%= msg %></ul>
+			<p>
+				<%= pluralize(@recipe.errors.count, "error") %> occured 
+			<ul>
+				<% @recipe.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+					<br>
+			</ul>
 		<% end %>
+
+	<div class="panel-body">
+		<%= f.file_field :image, input_html: { class: 'form-control' } %>
 		<br>
-	<% end %>
+		<%= f.input :title, input_html: { class: 'form-control' } %>
+		<br>
+		<%= f.input :description, input_html: { class: 'form-control' } %>
+		<br>
 
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <div class="btn btn-default add-button"><%= f.button :submit %></div>
-
+			<div class="col-md-6">
+				<h3> Ingredients </h3>
+					<% f.simple_fields_for :ingrediants do |ingredient|%> 
+					<%= render 'ingrediant_fields', f: ingredient %>
+					<% end %>
+					<div class="links">
+						<%= link_to_add_association 'Add Ingredient', f, :ingrediants, class: "btn btn-default add-button" %>
+					</div>
+			</div>
+			<div class="col-md-6">
+				<h3> Directions </h3>
+					<% f.simple_fields_for :directions do |direction| %>
+						<%= render 'direction_fields', f: direction %>
+						<% end %>
+					<div class="links">
+						<%= link_to_add_association 'Add Another Step', f, :directions, class: "btn btn-default add-button" %>
+					</div>
+				<br>
+			</div>
+	</div>
+	<br>
+	<%= f.button :submit, class: "btn btn-default" %>
 <% end %>

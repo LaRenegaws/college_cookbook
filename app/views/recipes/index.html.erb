@@ -1,4 +1,5 @@
 	<% @recipe.each do |recipe| %>
+			<%= image_tag recipe.image.url(:thumb) %>
 			<h2><%= link_to recipe.title, recipe %>
 			</h2>
 	<% end %>

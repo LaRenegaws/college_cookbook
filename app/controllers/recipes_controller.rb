@@ -1,8 +1,13 @@
 class RecipesController < ApplicationController
 	before_action :find_recipe, only: [:show, :edit, :update, :destroy]
+	before_action :require_user, except: [:index, :show]
 
 	def index
-		@recipe = Recipe.all.order("created_at DESC")
+	    if params[:search]
+	      @recipe = Recipe.search(params[:search]).order("created_at DESC")
+	    else
+	      @recipe = Recipe.order("created_at DESC")
+	    end
 	end
 
 	def new
@@ -26,9 +31,9 @@ class RecipesController < ApplicationController
 
 	def update
 		if @recipe.update(recipe_params)
-			redirect_to @recipe
+			redirect_to @recipe, notice: "Recipe successfully updated"
 		else
-			render 'edit'
+			render :edit
 		end
 	end
 
@@ -44,7 +49,7 @@ class RecipesController < ApplicationController
 	end
 
 	def recipe_params
-		params.require(:recipe).permit(:title, :description)
+		params.require(:recipe).permit(:image, :title, :description, ingrediants_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :order, :_destroy])
 	end
 
 end
