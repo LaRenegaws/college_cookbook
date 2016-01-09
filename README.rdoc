@@ -12,4 +12,4 @@ Ruby 2.2.2
 Improvements/Fixes to implement 
 - Better search function
 - Rating/Review feature
-- Fix nested forms
+- Improve nested forms
