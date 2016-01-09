@@ -1,4 +1,7 @@
 class Recipe < ActiveRecord::Base
+	extend FriendlyId
+  	friendly_id :title, use: :slugged
+
 	has_many :ingrediants
 	has_many :directions
 
@@ -18,7 +21,6 @@ class Recipe < ActiveRecord::Base
 	validates :description, presence: true
 	validates :ingrediants, presence: true
 	validates :directions, presence: true
-
 
 	  def self.search(query)
 	    where("title like ?", "%#{query}%")
