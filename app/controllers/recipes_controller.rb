@@ -19,6 +19,8 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = Recipe.new(recipe_params)
+		@recipe.user_email = current_user.email
+		@recipe.user_name = "#{current_user.first_name} #{current_user.last_name}"
 		if @recipe.save
 			redirect_to @recipe, notice: "Recipe successfully created"
 		else
@@ -40,6 +42,10 @@ class RecipesController < ApplicationController
 	def destroy
 		@recipe.destroy
 		redirect_to root_path, notice: "Recipe successfully deleted"
+	end
+
+	def view #profile page
+		@recipe = Recipe.select{|recipe| recipe.user_email == current_user.email}
 	end
 
 	private
