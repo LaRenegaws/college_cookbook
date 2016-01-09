@@ -18,9 +18,9 @@ class Recipe < ActiveRecord::Base
   	
   	validates :image, presence: true
 	validates :title, presence: true, length: {minimum: 2}
-	validates :description, presence: true
+	validates :description, presence: true, length: {maximum: 140}
 	validates :ingrediants, presence: true
-	validates :directions, presence: true
+	validates :directions, presence: true, length: {maximum: 50}
 
 	  def self.search(query)
 	    where("title like ?", "%#{query}%")
