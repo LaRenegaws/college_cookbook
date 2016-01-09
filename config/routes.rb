@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get '/about' => 'pages#view'
   get '/profile' => 'recipes#view'
 
+  #undefined routes point to home
+  get '*path' => redirect('/')
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
