@@ -1,6 +1,16 @@
-	<h1>Your Recipes</h1>
-	<% @recipe.each do |recipe| %>
-			<%= image_tag recipe.image.url(:thumb) %>
-			<h2><%= link_to recipe.title, recipe %>
-			</h2>
-	<% end %>
+<div class="container">
+	<div class="title">
+		<h1>Your Recipes</h1>
+	</div>
+	<%@recipe.each_slice(3) do |recipes|%>
+	<div class="row">
+		<% recipes.each do |recipe| %>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				<div class="img"><%= image_tag recipe.image.url(:thumb) %>
+				</div>
+				<h2><%= link_to recipe.title, recipe %>
+				</h2>
+			</div>
+		<% end %>
+	</div>
+<% end %>

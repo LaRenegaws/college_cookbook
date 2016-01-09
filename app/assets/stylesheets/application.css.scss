@@ -15,3 +15,27 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.recipe {
+	padding: 5em;
+}
+.title {
+	padding-top: 1em;
+    padding-left: 5em;
+    padding-bottom: 1em;
+}
+.img {
+	height: 100%;
+	width: 100%;
+	  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+.back_btn {
+	padding-top: 1em;
+}

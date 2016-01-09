@@ -1,34 +1,50 @@
-<%= image_tag @recipe.image.url(:medium) %>
-<h1><%=@recipe.title%></h1>
-<p class="date"><%= @recipe.created_at.strftime("%B, %d, %Y")%>
-</p> 
-<p>Created by <%= @recipe.user_name%></p>
-<p><%=@recipe.description%></p>
+<div class= "container-fluid">
+	<div class="row">
+		<div class="col-md-5 ">
+			<h1><%=@recipe.title%></h1>
+			<%= image_tag @recipe.image.url(:medium) %>
+			<p class="date"><%= @recipe.created_at.strftime("%B, %d, %Y")%>
+			</p> 
+			<p>Created by <%= @recipe.user_name%></p>
+			<div class="title"><h2>Description</h2></div>
+			<p><%=@recipe.description%></p>
+		</div>
+		<div class="col-md-2">
+			<div class="recipe">
+			<h2> Ingredients</h2>
+				<h3>
+				<ul class="list_group">
+					<% @recipe.ingrediants.each do |ingr| %>
+					<li><%= ingr.name %></li>
+					<% end %>
+				</ul>
+				</h3>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="recipe">
+				<h2> Directions</h2>
+					<h3>
+					<ul class="list_group">
+						<% @recipe.directions.each do |direc| %>
+						<li><%= direc.order %></li>
+						<% end %>
+					</ul>
+				</h3>
+			</div>
+		</div>
+	</div>
 
-<h2> Ingredients</h2>
-	<h3>
-	<ul class="list_group">
-		<% @recipe.ingrediants.each do |ingr| %>
-		<li><%= ingr.name %></li>
-		<% end %>
-	</ul>
-</h3>
+	</div>
+	<br>
+	<br>
 
-<h2> Directions</h2>
-	<h3>
-	<ul class="list_group">
-		<% @recipe.directions.each do |direc| %>
-		<li><%= direc.order %></li>
-		<% end %>
-	</ul>
-</h3>
+	<%= link_to "Back", root_path, class: "btn btn-default"%>
 
-<div class="btn btn-default"><%= link_to "Back", root_path %></div>
-
-<%if !current_user.nil? && (@recipe.user_email == current_user.email)%>
-	<div class="btn btn-default"><%= link_to "Edit", edit_recipe_path %></div>
-	<div class="btn btn-default"><%= link_to "Delete", recipe_path, method: :delete, data:{ confirm: "Are you sure?"} %></div>
-<% end %>
-
-<br>
-<br>
+	<%if !current_user.nil? && (@recipe.user_email == current_user.email)%>
+		<%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
+		<%= link_to "Delete", recipe_path, method: :delete, data:{ confirm: "Are you sure?"}, class: "btn btn-default"%>
+	<% end %>
+	<br>
+	<br>
+</div>
