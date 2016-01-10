@@ -3,7 +3,7 @@
 College Cookbook is a platform for users, partcularly students, who are looking for quick and simple meals. Students can share and create recipes for other students.
 
 Check it out at : https://still-taiga-3467.herokuapp.com/
-The project is ongoing
+Heroku can't save uploaded images.
 
 Built with Ruby on Rails 
 Rails 4.2.1
