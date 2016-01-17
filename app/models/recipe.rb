@@ -24,6 +24,7 @@ class Recipe < ActiveRecord::Base
 
 	def self.search(query)
 		where("title like ?", "%#{query}%")
+		where("description like ?", "%#{query}%")
 	end
 
 end
