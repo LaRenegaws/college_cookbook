@@ -22,8 +22,8 @@ class Recipe < ActiveRecord::Base
 	validates :ingrediants, presence: true
 	validates :directions, presence: true, length: {maximum: 50}
 
-	  def self.search(query)
-	    where("title like ?", "%#{query}%")
-	  end
+	def self.search(query)
+		where("title like ?", "%#{query}%")
+	end
 
 end

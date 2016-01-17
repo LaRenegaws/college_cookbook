@@ -55,6 +55,8 @@ end
 group :development do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
+  #bullet gem to test for N+1 querry problems
+  gem 'bullet'
 end
 
 group :production do

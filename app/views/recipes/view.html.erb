@@ -10,7 +10,20 @@
 				</div>
 				<h2><%= link_to recipe.title, recipe %>
 				</h2>
+				<h4> Ingredients</h4>
+				<ul class="list_group">
+					<% recipe.ingrediants.each do |ingr| %>
+					<li><%= ingr.name %></li>
+					<% end %>
+				</ul>
+				<h4> Directions</h4>
+					<ul class="list_group">
+						<% recipe.directions.each do |direc| %>
+						<li><%= direc.order %></li>
+						<% end %>
+					</ul>
 			</div>
 		<% end %>
 	</div>
 <% end %>
+</div>

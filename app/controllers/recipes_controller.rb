@@ -44,8 +44,8 @@ class RecipesController < ApplicationController
 		redirect_to root_path, notice: "Recipe successfully deleted"
 	end
 
-	def view #profile page
-		@recipe = Recipe.select{|recipe| recipe.user_email == current_user.email}
+	def view #profile page with eager loading
+		@recipe = Recipe.includes(:ingrediants, :directions).select{|recipe| recipe.user_email == current_user.email}
 	end
 
 	private
