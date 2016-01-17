@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = true
 
   config.after_initialize do
-  #Enable bullet in application to check for N + 1 issue
+  #Enable bullet in application to check for N + 1
   Bullet.enable = true
   Bullet.alert = true
   Bullet.rails_logger = true
