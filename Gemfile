@@ -28,6 +28,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem "paperclip", "~> 4.3"
 
+gem 'aws-sdk'
+
 gem "cocoon", "~> 1.2.6"
 
 gem 'friendly_id', '~> 5.1.0'
