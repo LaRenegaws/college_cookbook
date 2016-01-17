@@ -6,8 +6,9 @@ class ApplicationController < ActionController::Base
   #allows current_user method to be called in views
   helper_method :current_user
 
-  	def current_user 
+  def current_user 
 	  @current_user ||= User.find(session[:user_id]) if session[:user_id] 
+    rescue ActiveRecord::RecordNotFound
 	end
 
 	def require_user 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109062547) do
+ActiveRecord::Schema.define(version: 20160116175151) do
 
   create_table "directions", force: :cascade do |t|
     t.text     "order"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20160109062547) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "email_confirmed"
+    t.string   "confirm_token"
   end
 
 end
