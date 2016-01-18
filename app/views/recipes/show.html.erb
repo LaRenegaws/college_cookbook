@@ -43,7 +43,7 @@
 
 	<%if !current_user.nil? && (@recipe.user_email == current_user.email)%>
 		<%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
-		<%= link_to "Delete", recipe_path, method: :delete, data:{ confirm: "Are you sure?"}, class: "btn btn-default"%>
+		<%#= link_to "Delete", recipe_path, method: :delete, data:{ confirm: "Are you sure?"}, class: "btn btn-default"%>
 	<% end %>
 	<br>
 	<br>
