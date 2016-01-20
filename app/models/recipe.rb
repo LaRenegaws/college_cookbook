@@ -17,7 +17,7 @@ class Recipe < ActiveRecord::Base
   	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   	
   	validates :image, presence: true
-	validates :title, presence: true, length: {minimum: 2}
+	validates :title, presence: true, length: {minimum: 2, maximum: 30}
 	validates :description, presence: true, length: {maximum: 140}
 	validates :ingrediants, presence: true
 	validates :directions, presence: true, length: {maximum: 50}
