@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
 	before_action :find_recipe, only: [:show, :edit, :update, :destroy]
 	before_action :require_user, except: [:index, :show]
+	before_action :authenticate, only: [:edit]
 
 	def index
 	    if params[:search]

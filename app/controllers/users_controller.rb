@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 		if @user.save
 			redirect_to root_path, notice: "Signed up successfully"
 		else
-			redirect_to "/signup", notice: "Error with signup"
+			redirect_to "/signup", notice: "The Email already exists"
 		end
 	end
 

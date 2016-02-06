@@ -12,7 +12,13 @@ class ApplicationController < ActionController::Base
 	end
 
 	def require_user 
-	  redirect_to '/login' unless current_user 
+    redirect_to "/login", alert: "Please login" unless current_user  
 	end
+
+  def authenticate
+      if current_user.email != @recipe.user_email
+        redirect_to '/login', alert: "Not authorized! Only #{@recipe.user_name} has access to it"
+      end
+  end 
 
 end

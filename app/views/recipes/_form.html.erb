@@ -1,5 +1,5 @@
 <%= simple_form_for @recipe, html: { multipart: true } do |f| %>
-	<% if @recipe.errors.any? %>
+		<% if @recipe.errors.any? %>
 			<p>
 				<%= pluralize(@recipe.errors.count, "error") %> occured 
 			<ul>
@@ -8,7 +8,8 @@
 					<% end %>
 					<br>
 			</ul>
-		<% end %>
+			</p>
+	<% end %>
 
 	<div class="panel-body">
 		<%= f.file_field :image, input_html: { class: 'form-control' } %>
