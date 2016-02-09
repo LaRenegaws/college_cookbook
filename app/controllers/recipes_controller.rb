@@ -4,11 +4,15 @@ class RecipesController < ApplicationController
 	before_action :authenticate, only: [:edit]
 
 	def index
-	    if params[:search]
-	      @recipe = Recipe.search(params[:search]).order("created_at DESC")
-	    else
-	      @recipe = Recipe.order("created_at DESC")
-	    end
+		@search = Recipe.search do
+			fulltext params[:search]
+		end
+		@recipes = @search.results
+	    # if params[:search]
+	    #   @recipe = Recipe.search(params[:search])
+	    # else
+	    #   @recipe = Recipe.order("created_at DESC")
+	    # end
 	end
 
 	def new

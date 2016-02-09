@@ -37,6 +37,11 @@ gem 'friendly_id', '~> 5.1.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+#Embeds Solr inside gem
+gem 'sunspot_rails'
+# gem 'elasticsearch-rails'
+# gem 'elasticsearch-model'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -59,6 +64,8 @@ group :development do
 	gem 'sqlite3'
   #bullet gem to test for N+1 querry problems
   gem 'bullet'
+
+  gem 'sunspot_solr'
 end
 
 group :production do

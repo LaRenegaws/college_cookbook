@@ -1,10 +1,12 @@
 <div class="container">
-	<% if @recipe.blank? %>
-	<%=link_to 'Recipe Not Found'%>
-	<% end %>
-	<%@recipe.each_slice(3) do |recipes|%>
+	<!-- No results in search -->
+	<%# if @recipe.blank? %>
+	<%#=link_to 'Recipe Not Found'%>
+	<%# end %>
+
+	<%#@recipe.each_slice(3) do |recipes|%>
 	<div class="row">
-		<% recipes.each do |recipe| %>
+		<% @recipes.each do |recipe| %>
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="img"><%= image_tag recipe.image.url(:thumb) %>
 				</div>
@@ -13,5 +15,6 @@
 			</div>
 		<% end %>
 	</div>
-	<% end %>
+	<%# end %>
 </div>
+
