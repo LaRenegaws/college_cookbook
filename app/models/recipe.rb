@@ -2,8 +2,8 @@ class Recipe < ActiveRecord::Base
 	extend FriendlyId
   	friendly_id :title, use: :slugged
 
-	has_many :ingrediants
-	has_many :directions
+	has_many :ingrediants, dependent: :destroy
+	has_many :directions, dependent: :destroy
 
 	accepts_nested_attributes_for :ingrediants, 
 		allow_destroy: true,
