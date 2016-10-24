@@ -4,10 +4,16 @@ class RecipesController < ApplicationController
 	before_action :authenticate, only: [:edit]
 
 	def index
-		@search = Recipe.search do
-			fulltext params[:search]
+		if params[:search]
+			@search = Recipe.search do
+				fulltext params[:search]
+			end
+			@recipes = @search.results
+			redirect_to root_path, notice: "Nothing matched your search. Please try again" if @recipes.blank?
+		else 
+			@recipes = Recipe.order("created_at DESC")
 		end
-		@recipes = @search.results
+			# NOTE: This is used in prod since I'm not using Solr in prod
 	    # if params[:search]
 	    #   @recipe = Recipe.search(params[:search])
 	    # else
